@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>   
+    <title>Vue</title>
+</head>
+<body>
+    <div id="app">
+        <div style="background-color:#efefef; padding: 50px;">
+            <h3> Preencha os dados do contrato </h3>
+            <span> Empresa Contratante: </span>
+            <input type="text" v-model="EMPRESA_CONTRATANTE" placeholder="Digite o nome da empresa contratante" />
+
+            <span> Endereço: </span>
+            <input type="text" v-model="ENDERECO" placeholder="Digite o endereço da empresa contratante" /></br></br>
+
+            <span> Empresa Contratada: </span>
+            <input type="text" v-model="EMPRESA_CONTRATADA" placeholder="Digite o nome da empresa contratada">
+
+            <span> Endereço: </span>
+            <input type="text" v-model="ENDERECO_CONTRATADA" placeholder="Digite o endereço da empresa contratada"> </br></br>
+
+            <span> Objeto: </span>
+            <input type="text" v-model="OBJETO" placeholder="Digite o objeto do contrato">
+            
+            <span> Valor: </span>
+            <input type="text" v-model="VALOR" placeholder="Digite o valor do serviço">
+
+        </div>
+        <div id="contrato" style="max-width: 900px; border-top: 1px solid #eee; margin: 0 auto; margin-top: 50px;"> 
+            <div>
+                    <h3>CONTRATO DE PRESTAÇÃO DE SERVIÇOS</h3>
+                    <p><b>DEFINIÇÃO:</b> Esse contrato visa documentar a proposta de prestação de serviços, apresentada pela CONTRATADA e aceita previamente pela CONTRATANTE, contendo todas as informações acerca da metodologia de trabalho, do cronograma de atividades, dos recursos necessários para a execução do serviço, bem como as descrições das condições de pagamento e prazos previamente definidos.</p> 
+                    
+                    <p><b>CONTRATADA:</b> {{EMPRESA_CONTRATADA + ", "+ ENDERECO_CONTRATADA}} </p>    
+                    <p><b>CONTRATANTE:</b> {{EMPRESA_CONTRATANTE}}, {{ENDERECO}}</p>
+                    <p><b> OBJETO DO CONTRATO:</b> {{OBJETO}}</p>
+
+                    <p> <b>Clausula Primeira: DA PRESTAÇÃO DE SERVIÇOS </b><br>
+                     O serviço a ser prestado pela CONTRATADA é o projeto de desenvolvimento de sistema WEB da CONTRATANTE.
+                    </p>
+                    <p> <b>Clausula Segunda: DAS CONDIÇÕES DA PRESTAÇÃO DOS SERVIÇOS </b><br>
+                        <b> Obrigações da empresa Contratada </b><br> Utilizar recursos que facilite a navegação entre as páginas, tratamento de imagens, codificação e programação visual, oferecendo ao projeto, usabilidade, tecnologia.
+                        <br><b> Obrigações da Contratante ({{EMPRESA_CONTRATANTE}})</b>,<br>
+                        Fornecimento à CONTRATADA, de todas as informações e elementos necessários ao início e ao desenvolvimento do projeto na medida que solicitados via Email, sendo este o meio de comunicação oficial estabelecido, em suporte digital compatível com PCs, dentro de um período de 48 horas a partir da assinatura deste contrato, tempo razoável para evitar atrasos ou interrupções dos prazos estabelecidos no cronograma.
+                    </p>
+                    <p><b>Clausula Terceira: DO VALOR DO CONTRATO</b></p>
+                    <p> O Valor do presente contrato fica estabelecido em R$ {{VALOR}} - ({{VALOR_ESCRITO}}) a serem pagos pela EMPRESA CONTRATANTE no ato da contratação dos serviços.       
+            </div>
+        </div>     
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
