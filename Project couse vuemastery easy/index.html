@@ -12,31 +12,12 @@
     <div class="nav-bar"></div>
 
     <div id="app">
-
-        <div class="product">
-            <div class="product-image">
-
-                <!-- Dynamically binds an attribute to an expression. -->
-                <!-- v-bind:src(attribute) -->
-                <!-- = -->
-                <!-- "(expression)" --> 
-
-                <!-- v-bind:src pode ser diminuito para :src onde os dois pontos é o mesmo de se usar V-BIND -->
-
-                <img v-bind:src="image" alt="product">
-
-                <!-- <a :href="link">Click here!</a> -->
-
+            <div class="cart">
+                    <p>Cart({{ cart.length }})</p>
             </div>
-            <div class="product-info">
-                <h1>{{ product }}</h1>
-                <p v-if="stock > 10 ">In Stock</p>
-                <p v-else-if="stock <=10 && stock > 0">Almost sold out</p>
-                <p v-else>Out of Stock</p>
-
-                <!-- <p v-if="onSale">On Sale!</p> -->
-            </div>
-        </div>
+        
+        <product :premium="premium" @add-to-cart="updateCart"></product>
+        
 
     </div>
 
