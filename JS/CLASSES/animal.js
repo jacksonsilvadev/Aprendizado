@@ -38,3 +38,17 @@ class Gato extends Animal {
         return `Cor: ${this.cor}`
     }
 }
+
+// Teste
+class Cachorro extends Animal {
+    constructor (pernas,cor,som) {
+        super('Cachorro', pernas)
+
+        this.cor = cor;
+        this.som = som
+    }
+
+    get falar(){
+        return this.som
+    }
+}
