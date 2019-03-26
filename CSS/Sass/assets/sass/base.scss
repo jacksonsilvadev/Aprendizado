@@ -1,0 +1,93 @@
+$cinza: #d9d9d9;
+$black: #000000;
+
+// Importar outro arquivo
+@import 'rest';
+
+// Função 
+@mixin border {
+    border: 1px solid #C9C9C9;
+}
+
+header {
+    width: 100%;
+    height: 200px;
+    background: $cinza;
+}
+
+section {
+    width: 100%;
+    height: 200px;
+    background: #C9C9C9;
+    @include border
+}
+
+
+%item-padrao {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+%item-negrito {
+    font-weight: bold;
+}
+
+// fazer FOR e IF
+
+@for $i from 1 through 10 {
+    .item-#{$i} {
+        @extend %item-padrao;
+
+        @if $i <=3 and $i>=0 {
+            @extend %item-negrito
+        }
+
+        @else {}
+    }
+}
+
+
+// representação para declarar no [footer a] se usa dessa maneira:
+footer {
+    width: 100%;
+    height: 200px;
+    background: blue;
+
+    &:hover a {
+        background: red;
+    }
+
+    a {
+        background-color: #000;
+
+        &:hover {
+            background: #C9C9C9
+        }
+    }
+}
+
+%msg {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.msg-info {
+    @extend %msg;
+    color: aquamarine;
+}
+
+// para gerar arquivo css do SASS estático só colocar
+
+//sass css/sass/assets/base.scss CSS/sass/assets/css/base.css
+
+// Para gerar sem o arquivo source-map
+
+// sass css/sass/assets/base.scss CSS/sass/assets/css/base.css --no-souce-map
+
+// Para gerar automáticamente toda vez que tiver alteração no CSS é só usar o Watch
+
+// sass css/sass/assets/base/.scss CSS/sass/assets/css/base.css --no-source-map --watch
+
+// Para gerar automaticamente a pasta toda só utilizar
+
+// sass  --watch /sass/:/css/ --no-source-map
