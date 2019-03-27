@@ -1,0 +1,12 @@
+body {
+    background-color: #555;
+    color: #fff;
+    font-size: 15px;
+}
+
+.area {
+    width: 300px;
+    border: 1px solid #fff;
+    padding: 20px;
+    margin: auto;
+}
