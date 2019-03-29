@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue</title>
+    <script src="./vue.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+
+
+        <!-- Uma forma de como colocar a variável visível para o usuário, mas evitar para não poluir código -->
+        {{ frase }}
+
+        <!-- Uma forma mais correta de como colocar variável visível em html ou text =  v-html ou v-text -->
+
+        <h1 v-html="frase"></h1>
+        <h3 v-text="frase"></h3>
+
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
