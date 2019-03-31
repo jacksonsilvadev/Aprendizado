@@ -1,38 +1,22 @@
 <template>
   <div id="app">
-   <Todos v-bind:todos="todos"></Todos>
+    <div id="nav">
+
+      <Header></Header>
+      <!-- <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> -->
+    </div>
+    <router-view/>
   </div>
 </template>
 
 <script>
-
-import Todos from './components/Todos.vue';
+import Header from './components/layout/Header.vue';
 
 export default {
-  name: 'app',
+  name:"app",
   components: {
-    Todos
-  },
-  data() {
-    return{
-      todos: [
-        {
-          id: 1,
-          title: "Todo One",
-          completed: false
-        },
-         {
-          id: 2,
-          title: "Todo Two",
-          completed: true
-        },
-         {
-          id: 3,
-          title: "Todo Theree",
-          completed: false
-        },
-      ]
-    }
+    Header
   }
 }
 </script>
@@ -47,5 +31,17 @@ export default {
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
+}
+.btn {
+  display: inline-block;
+  border: none;
+  background: #555;
+  color: #fff;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #666;
 }
 </style>
