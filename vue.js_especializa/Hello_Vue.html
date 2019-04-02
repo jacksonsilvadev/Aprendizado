@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello World !</title>
+    
+    
+</head>
+<body>
+    
+    <div id="app">
+        <p>{{ title }}</p>
+
+                    <!-- {{}} = interpolação para passar o valor do data Vue -->
+        <p>{{ title }}</p>
+        <p>{{ title }}</p>
+        <p>{{ title }}</p>
+        <p>{{ title }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // Estruturação para chamar a Classe Vue passando seus devidos valores.
+        // El - Elemento qual elemento vai receber essa instância do Vue.
+        // data - Variáveis que estão nessa instância.
+        new Vue({
+            el:'#app',
+            data: {
+                title: 'Hello World'
+            }
+        })
+    </script>
+</body>
+</html>
