@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Eventos</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <p @click.ctrl="testeEvent">{{ valueText }}</p>
+        <!-- tem que colocar @click.ctrl.exact caso queira que só ative com essas teclas, pois por padrão
+            se apertar click+ctrl e qualquer outra tecla ainda funcionará
+        -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue ({
+            el:'#app',
+            data:{
+                valueText: 'Clique aqui!'
+            },
+            methods: {
+                testeEvent(){
+                    alert('teste')
+                }
+            }    
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Propriedade</title>
+</head>
+
+<body>
+
+    <div id="app">
+      <button @click="count++">Incrementar</button>
+      <button @click="count--">Decrementar</button>
+
+        <!-- Computed armazena na memória a função não precisando  ser recriada a todo momento-->
+
+      <p>{{ count }} || {{ countComputed }}  {{ countComputed }}  {{ countComputed }} {{ countComputed }}</p>
+
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <button @click="count++">Incrementar</button>
+      <button @click="count--">Decrementar</button>
+<!-- Method ele é recriado a função toda hora qye é chamada novamente, mesmo que seja em ajax -->
+      <p>{{ count }} || {{ countMethod() }} {{ countMethod() }} {{ countMethod() }} {{ countMethod() }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue ({
+            el:'#app',
+            data:{
+                count: 0  
+            },
+            methods: {
+                countMethod: function() {
+                    console.log('hi')
+                    return this.count >= 5 ? 'Maior que 5' : 'Menor que 5'
+                }
+            },
+            computed: {
+                countComputed: function(){
+                    console.log('hi')
+                    return this.count >= 5 ? 'Maior que 5' : 'Menor que 5'
+                }
+            }    
+        })
+    </script>
+</body>
+
+</html>
