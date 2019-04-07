@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if</title>
+    
+    
+</head>
+<body>
+    
+    <div id="app">
+        <div v-if="number == 12">
+            Aqui é o if
+        </div>
+        <div v-else-if="number > 12">
+                Else if
+        </div>
+        <div v-else>
+               Aqui é o else
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        
+        new Vue({
+            el:'#app',
+            data: {
+                title: 'Hello World',
+                number: 0
+            }
+        })
+    </script>
+</body>
+</html>

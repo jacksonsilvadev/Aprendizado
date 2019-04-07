@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Style</title>
+
+    <style>
+        .active {
+            background-color: green;
+        }
+        .inactive {
+            background-color: red;
+        }
+        .text-red {
+            color: red
+        }
+        .default{
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div :class="{active : isActive}">
+            Exemplo de classe com bind
+        </div>
+
+        <div :class="isActive ? 'active':'inactive'">
+                Exemplo de classe com bind com if
+        </div>
+
+        <!-- Posso passar uma classe default e fazer a verificação -->
+        <div class="default" :class="isActive ? 'active':'inactive'">
+                Exemplo de classe com bind com if
+        </div>
+
+        <!-- Posso passar a classe default na class bind como um array e ja fazer a verificação -->
+
+        <div :class="['default',isActive ? 'active':'inactive']">
+                Exemplo de classe com bind com if
+        </div>
+
+        <!-- Posso criar um objeto com as classes e colocar ele aqui para aparecer as classes na minha div -->
+
+        <div :class="['default',isActive ? 'active':'inactive',classObject]">
+                Exemplo de classe com bind com if
+        </div>
+
+
+
+        <div :style="{display: ['-webkit-flex','-moz-flex', 'flex']}">
+                Exemplo de classe com bind com if
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue ({
+            el:'#app',
+            data:{
+               isActive: true,
+               classObject: {
+                   active:false,
+                   'text-red': true,
+                   'color-white': false
+               }
+            },  
+        })
+    </script>
+</body>
+
+</html>

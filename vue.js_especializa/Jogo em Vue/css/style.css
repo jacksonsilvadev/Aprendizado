@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+img{
+    max-width: 100%;
+}
+
+.title{
+    color: #999;
+    margin: 30px 0;
+    text-transform: uppercase;
+}
+
+.active img{
+    border: green solid 5px;
+    border-radius: 50%; 
+}
+
+img.carts{
+    max-width: 150px;
+}
+
+img.cart{
+    max-width: 130px;
+}
+
+/* .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.controls a {
+    margin: 10px;
+} */
