@@ -1,13 +1,21 @@
 <template>
     <div>
         <h1 v-text="title"></h1>
+
+        <ul>
+            <li v-for="(item, index) in items" :key="index"> {{ item }} </li>
+        </ul>
+        {{ call() }}
     </div>
 </template>
 
 <script>
 export default {
+    props: ['items','call'],
     data () {
-        title: 'Lista de Tarefas'
+       return {
+           title: 'Lista de tarefas'
+       }
     }
 }
 </script>
