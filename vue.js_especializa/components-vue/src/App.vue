@@ -27,7 +27,7 @@ export default {
       console.log("%c Top isso mano", "color: yellow");
     },
     answerSon(value) {
-      alert(value);
+      this.items.push(value);
     }
   },
   components: {

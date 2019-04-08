@@ -2,6 +2,7 @@
   <div>
     <h2>{{ title }}</h2>
 
+    <input type="text" name="name" id="name" v-model="task" placeholder="Task">
     <button @click="callParent">Chamar Pai</button>
 
     <div>
@@ -24,9 +25,14 @@ export default {
       default: []
     }
   },
+  data() {
+    return {
+      taks: ""
+    };
+  },
   methods: {
     callParent() {
-      this.$emit("calledParent", "hi");
+      this.$emit("calledParent", this.task);
     }
   }
 };
