@@ -15,14 +15,15 @@ export default {
   },
   components: {
     Quiz
-  }
+  },
+ 
 };
 </script>
 
 <style>
 .teste-enter-active,
 .teste-leave-active {
-  transition: opacity 1.5s;
+  transition: opacity 1s;
 }
 
 .teste-enter,
