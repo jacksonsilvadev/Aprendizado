@@ -24,6 +24,15 @@
       </tbody>
     </table>
 
+  <ul class="pagination">
+    <li v-if="products.current_page - 1 >= 1" class="page-item">
+        <a href="#" class="page-link" @click.prevent="pagination(products.current_page - 1)"> Previous Page </a>
+    </li>
+    <li v-if="products.current_page + 1 == products.last_page" class="page-item">
+        <a href="#" class="page-link" @click.prevent="pagination(products.current_page + 1)"> Next Page </a>
+    </li>
+  </ul>
+
     <div v-if="preloader">
       <img src="../../assets/preloader.gif" alt="preloader" class="preloader">
     </div>
@@ -35,14 +44,17 @@ export default {
   data() {
     return {
       title: "Product Page do Site",
-      products: {},
+      products: {
+        current_page: 1,
+        last_page: 1
+      },
       preloader: false
     };
   },
   methods: {
     getProducts () {
       this.preloader=true
-      this.$http.get('http://laravel55-weservice.local/api/v1/products')
+      this.$http.get(`http://laravel55-weservice.local/api/v1/products?page=${this.products.current_page}`)
       .then(response => {
         this.products = response.body
       this.preloader = false
@@ -50,6 +62,11 @@ export default {
       }), error => {
         console.log(error)
       }
+    },
+    pagination (pageNumber) {
+      this.products.current_page = pageNumber
+     
+     this.getProducts()
     }
   },
   created(){
