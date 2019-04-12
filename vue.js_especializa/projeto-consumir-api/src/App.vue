@@ -1,8 +1,12 @@
 <template>
-  <div id="app" class="container text-center">
-    <router-link to="/">Home</router-link>
-    <router-link to="/products">Products</router-link>
-    <router-view></router-view>
+  <div id="app">
+    <nav class="navbar justify-content-center navbar-expand-lg navbar-light bg-light">
+      <router-link class="navbar-brand" to="/">Home</router-link>
+      <router-link class="navbar-brand" to="/products">Products</router-link>
+    </nav>
+    <div class="container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -18,5 +22,4 @@ export default {
 </script>
 
 <style>
-
 </style>
