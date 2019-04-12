@@ -2,7 +2,7 @@
   <div>
     <h1 class="text-center">{{ title }}</h1>
 
-    <form @submit.prevent="saveData">
+    <form @submit.prevent="editData">
       <div class="form-group" :class="{'has-danger' : errorValidation.name}">
         <label for>Name</label>
         <input
@@ -32,7 +32,7 @@
       </div>
 
       <div class="form-group text-center">
-        <button type="submit" class="btn btn-success">Create</button>
+        <button type="submit" class="btn btn-success">Editar</button>
       </div>
     </form>
     <preloader-component :preloader="preloader"></preloader-component>
@@ -43,9 +43,15 @@
 import PreloaderComponent from "../general/PreloaderComponent";
 
 export default {
+    props: {
+        id: {
+            required: true,
+            default: '',
+        }
+    },
   data() {
     return {
-      title: "Create your Product",
+      title: "Edit your Product",
       product: {
         name: "",
         description: ""
@@ -57,11 +63,32 @@ export default {
   components: {
     PreloaderComponent
   },
+  created() {
+     this.getProduct()
+  },
   methods: {
-    saveData() {
+      getProduct () {
+            this.preloader = true
+            this.$http.get(`http://laravel55-weservice.local/api/v1/products/${this.id}`)
+            .then(
+          res => {
+
+              this.product.name = res.body.name
+              this.product.description = res.body.description
+              
+          },
+          err => {
+            console.log(err)
+          })
+        .finally(() => {
+           this.preloader = false
+        });
+      
+      },
+    editData() {
       this.preloader = true
       this.$http
-        .post("http://laravel55-weservice.local/api/v1/products", this.product)
+        .put(`http://laravel55-weservice.local/api/v1/products/${this.id}`, this.product)
         .then(
           res => {
             this.$router.push("/products");
@@ -72,6 +99,7 @@ export default {
           },
           err => {
             this.errorValidation = err.body.errors;
+            console.log(err)
           })
         .finally(() => {
            this.preloader = false

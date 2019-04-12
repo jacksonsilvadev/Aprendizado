@@ -4,6 +4,12 @@
 
     <div class="row">
       <div class="col-12">
+        <div v-if="confirmDelete" class="alert alert-danger text-center">
+          <h2>Deseja realmente deletar?</h2>
+      <hr>
+    <button @click.prevent="deleteProduct(idProductDelete)" class="btn btn-danger"> Deletar Agora </button>
+        </div>
+  <search-product-component @filter="filtered"></search-product-component>
         <router-link class="btn btn-primary float-right mb-3" to="/products/create">Add product</router-link>
       </div>
     </div>
@@ -23,14 +29,18 @@
           <th v-text="product.name"></th>
           <th v-text="product.description"></th>
           <th>
-            <a href="#" class="btn btn-info">Editar</a>
-            <a href="#" class="btn btn-danger">Deletar</a>
+            <router-link class="btn btn-info" :to="{name: 'product.edit', params: {
+              id: product.id
+            }}">Editar</router-link>
+            <a href="#" @click.prevent="confirmDeleteProduct(product.id)" class="btn btn-danger">Deletar</a>
           </th>
         </tr>
       </tbody>
     </table>
 
     <pagination-component @pagination="pagination" :preloader="preloader" :pagination="products"></pagination-component>
+    
+    
     <!-- <ul class="pagination">
       <li v-if="products.current_page - 1 >= 1" class="page-item">
         <a
@@ -48,14 +58,16 @@
       </li>
     </ul>-->
 
-    <div v-if="preloader" class="text-center">
-      <img src="../../assets/preloader.gif" alt="preloader" class="preloader">
-    </div>
+  <preloader-component :preloader="preloader"></preloader-component>
+    
   </div>
 </template>
 
 <script>
 import paginationComponent from "../general/paginationComponent";
+import SearchProductComponent from "./SearchProductComponent";
+import PreloaderComponent from "../general/PreloaderComponent";
+
 export default {
   data() {
     return {
@@ -64,28 +76,60 @@ export default {
         current_page: 1,
         last_page: 1
       },
-      preloader: false
+      preloader: false,
+      confirmDelete: false,
+      idProductDelete: 0,
+      filter:''
     };
   },
   components: {
-    paginationComponent
+    paginationComponent,
+    PreloaderComponent,
+    SearchProductComponent
   },
   methods: {
     getProducts() {
       this.preloader = true;
       this.$http
         .get(
-          `http://laravel55-weservice.local/api/v1/products?page=${
-            this.products.current_page
-          }`
+          `http://laravel55-weservice.local/api/v1/products?page=${this.products.current_page}&filter=${this.filter}`
         )
         .then(response => {
+          this.idProductDelete = 0
+          this.confirmDelete = false,
           this.products = response.body;
           this.preloader = false;
         }),
         error => {
           console.log(error);
         };
+    },
+    confirmDeleteProduct(id) {
+      this.idProductDelete = id
+      this.confirmDelete = true
+    },
+    deleteProduct(id){
+       this.preloader = true;
+
+      this.$http
+        .delete(
+          `http://laravel55-weservice.local/api/v1/products/${
+           id
+          }`
+        )
+        .then(response => {
+          
+          this.getProducts()
+          this.preloader = false;
+        }),
+        error => {
+          console.log(error);
+        };
+    },
+    filtered(filter){
+      this.filter = filter
+
+      this.getProducts()
     },
     pagination(pageNumber) {
       this.products.current_page = pageNumber;

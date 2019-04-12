@@ -17,8 +17,7 @@
       </li>
 
       <!-- Pega o valor do current page mostrando para o usuário todas as páginas -->
-      <li
-        v-if="pagination.last_page > 1"
+      <li v-if="pagination.last_page > 1"
         v-for="(page,index) in pagesNumber"
         :class="['page-item', {'active': page == pagination.current_page}]"
         :key="index"
